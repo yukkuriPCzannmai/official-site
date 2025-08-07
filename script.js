@@ -86,3 +86,33 @@ const fetchLatestVideos = async () => {
 
 // 最新の動画情報を取得
 fetchLatestVideos();
+
+<script>
+    const popup = document.getElementById('privacy-popup');
+    const agreeBtn = document.getElementById('agree-button');
+
+    // クッキーに保存（有効期限：365日）
+    function setCookie(name, value, days) {
+      const expires = new Date();
+      expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+    }
+
+    // クッキーの読み取り
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // 初回だけ表示
+    if (!getCookie('privacyAccepted')) {
+      popup.style.display = 'flex';
+    }
+
+    agreeBtn.addEventListener('click', () => {
+      setCookie('privacyAccepted', 'true', 365);
+      popup.style.display = 'none';
+    });
+
+
