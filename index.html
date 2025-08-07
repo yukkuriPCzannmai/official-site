@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆっくりPC三昧公式サイト</title>
+    <link rel="icon" href="画像/ロゴ.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="画像/ロゴ.ico" alt="サイトのロゴ">
+            <h1>ゆっくりPC三昧公式サイト</h1>
+        </div>
+        <button class="menu-toggle" aria-label="メニューを開閉">☰</button>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="about.html">私たちについて</a></li>
+                <li><a href="blog.html">チャンネルブログ</a></li>
+                <li><a href="videos.html">動画情報</a></li>
+                <li>
+                    <!-- ヘッダーの検索フォーム -->
+                    <form id="search-form" class="search-form">
+                        <input type="search" id="search-input" placeholder="検索..." aria-label="検索ボックス">
+                        <button type="submit">検索</button>
+                    </form>
+                    <!-- 検索結果表示エリア -->
+                    <div id="search-results"></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- メインコンテンツ -->
+        <img class="トップ画像" src="画像/バナー画像.jpg">
+        <h1 class="キャッチコピー">PCの楽しさ、有意義な情報をサクッと楽しくゆっくり解説</h1>
+    
+        <!-- ボタンを横並びにするためのコンテナ -->
+        <div class="button-container">
+            <!-- YouTubeチャンネル登録ボタン -->
+            <div class="youtube-subscribe">
+                <script src="https://apis.google.com/js/platform.js"></script>
+                <div class="g-ytsubscribe" 
+                     data-channelid="UCSMJlaoba1qvXE5mjnajOkA" 
+                     data-layout="default" 
+                     data-theme="default" 
+                     data-count="default">
+                </div>
+            </div>
+            
+            <!-- チャンネルの動画一覧に飛ばすボタン -->
+            <a href="https://www.youtube.com/@yukkuriPCzanmai/videos" target="_blank" class="btn-video-channel">
+                チャンネルの動画一覧を見る
+            </a>
+        </div>
+        <div class="new video">
+            <h1>最新の動画</h1>
+        </div>
+        <div id="video-list">
+            <!-- 各動画の情報がここに追加されます -->
+        </div>
+        <h1>ゆっくりPC三昧ってどんなチャンネル？</h1>
+        <p>ゆっくりPC三昧はゆっくりキャラを用いてパソコンについて解説しているチャンネルです。
+        </p>
+        <h1>このチャンネルの方針</h1>
+        <p>このチャンネルは初心者さんが簡単についていきやすくするためゆっくりわかりやすくしています
+            <br>もっとわかりやすい動画を目指して頑張ります
+            <br>特にこれわからなかったなどのコメントがありますと次回からわかりやすくなるような参考資料にさせていただきます
+            <br>ゆっくりみんなで勉強していこう！！！
+        </p>
+        <div class="Navigator in home">
+            <h1>サイトマップ</h1>
+            <a href="利用規約.html" class="Personal-Security">利用規約</a>
+            <a href="about.html" class="me-to"> 私達について</a>
+            <a href="contact.html" class="Contact"> お問い合わせ</a>
+            <a href="videos.html" class="Master-videos"> 動画情報</a>
+        </div>
+    </main>
+    
+
+    <footer>
+        <div class="footer-logo">
+            <img src="画像/ロゴ.ico" alt="フッターロゴ">
+            <span>ゆっくりPC三昧</span>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href=about.html>私たちについて</a></li>
+               <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7"target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+                <li><a href="利用規約.html">プライバシー</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            &copy; 2025 ゆっくりPC三昧. 全著作権を保持します。
+        </div>
+    </footer>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>

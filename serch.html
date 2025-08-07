@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ゆっくりPC三昧公式サイト|検索</title>
+        <link rel="icon" href="画像/ロゴ.ico">
+        <link rel="stylesheet" href="blog.css">
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script>
+            // gapiの初期化
+            function initApi() {
+                gapi.client.init({
+                    apiKey: 'YOUR_API_KEY',  // Google APIキーを設定
+                    clientId: 'YOUR_CLIENT_ID',  // クライアントIDを設定
+                    discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
+                    scope: "https://www.googleapis.com/auth/youtube.readonly"
+                }).then(function() {
+                    console.log('API initialized');
+                    // APIが準備できた後に行いたい処理をここに追加
+                }).catch(function(error) {
+                    console.log('API initialization failed: ', error);
+                });
+            }
+
+            function loadApi() {
+                gapi.load('client:auth2', initApi); // APIの初期化を行う
+            }
+
+            window.onload = function() {
+                loadApi(); // ページ読み込み時にAPIをロード
+            };
+
+            // 検索機能
+            document.addEventListener("DOMContentLoaded", function() {
+                // 検索対象となるデータ
+                const posts = [
+                    { title: "PCの最適化方法について", content: "PCのパフォーマンスを最大化する方法..." },
+                    { title: "Windowsのメモリ管理", content: "Windowsのメモリ管理方法について解説..." },
+                    { title: "ネットワークトラブルシューティング", content: "ネットワークの問題解決方法について..." }
+                ];
+
+                // 検索フォームと結果表示エリアの参照
+                const searchForm = document.getElementById("search-form");
+                const searchInput = document.getElementById("search-input");
+                const searchResults = document.getElementById("search-results");
+
+                // 検索処理
+                searchForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // フォーム送信のデフォルト動作を防ぐ
+
+                    const query = searchInput.value.toLowerCase();
+                    const filteredPosts = posts.filter(post => 
+                        post.title.toLowerCase().includes(query) || post.content.toLowerCase().includes(query)
+                    );
+
+                    // 結果表示
+                    if (searchResults) {
+                        searchResults.innerHTML = "";
+                        if (filteredPosts.length > 0) {
+                            filteredPosts.forEach(post => {
+                                const postElement = document.createElement("div");
+                                postElement.classList.add("search-result");
+                                postElement.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+                                searchResults.appendChild(postElement);
+                            });
+                        } else {
+                            searchResults.innerHTML = "<p>一致する結果はありません。</p>";
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+<body>
+
+    <header>
+        <div class="logo-title">
+            <img src="画像/ロゴ.ico" alt="サイトのロゴ">
+            <h1>ゆっくりPC三昧公式サイト</h1>
+        </div>
+        <button class="menu-toggle" aria-label="メニューを開閉">☰</button>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="about.html">私たちについて</a></li>
+                <li><a href="blog.html">チャンネルブログ</a></li>
+                <li><a href="videos.html">動画情報</a></li>
+                <li>
+                    <!-- ヘッダーの検索フォーム -->
+                    <form id="search-form" class="search-form">
+                        <input type="search" id="search-input" placeholder="検索..." aria-label="検索ボックス">
+                        <button type="submit">検索</button>
+                    </form>
+                    <!-- 検索結果表示エリア -->
+                    <div id="search-results"></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>検索ページ</h2>
+
+        <form id="search-form" class="search-form">
+            <input type="search" id="search-input" placeholder="検索キーワードを入力" aria-label="検索ボックス">
+            <button type="submit">検索</button>
+        </form>
+
+        <div id="search-results"></div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="画像/ロゴ.ico" alt="フッターロゴ">
+            <span>ゆっくりPC三昧</span>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="about.html">私たちについて</a></li>
+               <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7"target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+                <li><a href="利用規約.html">プライバシー</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            &copy; 2025 ゆっくりPC三昧. 全著作権を保持します。
+        </div>
+    </footer>
+
+</body>
+</html>

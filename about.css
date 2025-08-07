@@ -1,0 +1,604 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダー */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-title img {
+    height: 60px;
+}
+
+.logo-title h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* ナビゲーションメニュー */
+nav.menu {
+    display: flex;
+}
+
+nav.menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav.menu ul li {
+    margin: 0;
+}
+
+nav.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav.menu ul li a:hover {
+    background-color: #45a049;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-form input[type="search"] {
+    padding: 6px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #45a049;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #3e8e41;
+}
+
+/* ハンバーガーメニュー */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    nav.menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #4CAF50;
+    }
+
+    nav.menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
+    }
+
+    nav.menu ul li {
+        width: 100%;
+    }
+
+    nav.menu ul li a {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav.menu.active {
+        display: flex;
+    }
+}
+
+/* 動画情報 */
+#video-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.video-info {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-info img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.video-info h2 {
+    font-size: 1.4em;
+    margin-top: 10px;
+}
+
+.video-info p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.video-info p strong {
+    color: #0073e6;
+}
+
+/* ヘッダーのカラー変更 */
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-title img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* フッター */
+footer {
+    background-color: #333; /* ヘッダーと同じ色 */
+    color: #fff; /* 文字色を白に */
+    padding: 20px 10%; /* 上下20px、左右10% */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+footer .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .footer-logo img {
+    width: 50px; /* ロゴのサイズ */
+    height: auto;
+}
+
+footer .footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-links ul li a {
+    color: #fff; /* リンクの色を白に */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .footer-links ul li a:hover {
+    color: #4CAF50; /* ホバー時にアクセントカラー */
+}
+
+footer .copyright {
+    font-size: 0.9em;
+    color: #ccc; /* 薄い文字色 */
+    margin-top: 10px;
+    flex-basis: 100%; /* 小さい画面で折り返す */
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer .footer-links ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* トップ画像 */
+.トップ画像{
+    max-width: 100%;  /* 親要素の幅に合わせて拡大・縮小 */
+    height: auto;     /* アスペクト比を保ちながら高さを自動調整 */
+}
+
+.キャッチコピー{
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+}
+
+/* YouTubeチャンネル登録ボタン */
+.g-ytsubscribe {
+    margin: 20px 0;
+    width: 100%; /* ボタンを親要素いっぱいに広げる */
+}
+
+/* ボタンを横並びにするためのコンテナ */
+.button-container {
+    display: flex;
+    justify-content: center; /* 中央に配置 */
+    gap: 20px; /* ボタン間の間隔 */
+    margin-top: 20px; /* 上部の余白 */
+}
+
+
+
+/* YouTubeチャンネル登録ボタンとチャンネル動画一覧ボタンを同じ大きさにする */
+.youtube-subscribe, .btn-video-channel {
+    display: inline-block; /* 隣同士に並べる */
+    width: 300px; /* 両方を同じ幅に設定 */
+    height: 60px;
+    padding: 15px 30px; /* ボタンのサイズ */
+    font-size: 16px; /* フォントサイズ */
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* YouTubeの赤いボタン */
+.btn-video-channel {
+    background-color: #FF0000; /* YouTubeの赤 */
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-video-channel:hover {
+    background-color: #cc0000; /* ホバー時の色 */
+}
+.new.video h1 {
+    text-align: center; /* 水平方向の中央揃え */
+    margin: 20px 0; /* 上下に余白を追加 */
+}
+/* リンクをボタン風にするスタイル */
+a.Personal-Security {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #047dff; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Personal-Security:hover {
+    background-color: #0056b3; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Personal-Security:active {
+    background-color: #003366; /* クリックしたときにボタンが少し暗くなる */
+}
+/* リンクをボタン風にするスタイル */
+a.me-to {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #04ff6d; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.me-to:hover {
+    background-color: #00b345; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.me-to:active {
+    background-color: #00662e; /* クリックしたときにボタンが少し暗くなる */
+}
+
+a.Contact {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #7904ff; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Contact:hover {
+    background-color: #8f00b3; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Contact:active {
+    background-color: #3d0066; /* クリックしたときにボタンが少し暗くなる */
+}
+a.Master-videos{
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #ff04de; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Master-videos:hover {
+    background-color: #b3008c; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Master-videos:active {
+    background-color: #660055; /* クリックしたときにボタンが少し暗くなる */
+}
+
+/* キャラクター紹介セクション */
+.character-introduction {
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* キャラクターの見出し */
+.character-introduction h1 {
+    font-size: 28px;
+    color: #474747;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 各キャラクター情報のレイアウト */
+.character-introduction .character-info, 
+.character-introduction .character-intro {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* キャラクター画像 */
+.character-img {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0; /* 画像の縮小を防止 */
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* キャラクターの説明 */
+.character-description {
+    flex: 1; /* テキスト部分を伸縮可能に */
+    text-align: left;
+}
+
+.character-description h4 {
+    font-size: 20px;
+    color: #444;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.character-description p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    word-wrap: break-word; /* 長い単語での崩れ防止 */
+}
+
+/* レイアウトを逆転するクラス */
+.character-intro.reverse {
+    flex-direction: row-reverse;
+}
+
+.character-intro.reverse .character-img {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .character-info, .character-intro {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .character-img {
+        margin: 0 0 20px;
+    }
+
+    .character-intro.reverse {
+        flex-direction: column;
+    }
+
+    .character-intro.reverse .character-img {
+        margin: 0 0 20px;
+    }
+}
+/* 基本的なスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* チャンネルの説明セクション */
+.channel-description {
+    background-color: #ffffff;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.channel-description p {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* チャンネル方針セクション */
+.channel-policy {
+    background-color: #ffffff;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.channel-policy p {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* ボタンや強調 */
+.channel-policy p strong {
+    color: #2c8be8;
+    font-weight: bold;
+}
+
+.channel-description h1, .channel-policy h1 {
+    color: #2c8be8; /* 明るいブルーを使用 */
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .channel-description, .channel-policy {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .channel-description p, .channel-policy p {
+        font-size: 1em;
+    }
+}
+#search-results {
+    margin-top: 20px;
+}
+
+.search-result {
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.search-result h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.search-result p {
+    margin-top: 5px;
+    color: #666;
+}
+

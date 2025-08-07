@@ -1,0 +1,1236 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダー */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-title img {
+    height: 60px;
+}
+
+.logo-title h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* ナビゲーションメニュー */
+nav.menu {
+    display: flex;
+}
+
+nav.menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav.menu ul li {
+    margin: 0;
+}
+
+nav.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav.menu ul li a:hover {
+    background-color: #45a049;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-form input[type="search"] {
+    padding: 6px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #45a049;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #3e8e41;
+}
+
+/* ハンバーガーメニュー */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    nav.menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #4CAF50;
+    }
+
+    nav.menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
+    }
+
+    nav.menu ul li {
+        width: 100%;
+    }
+
+    nav.menu ul li a {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav.menu.active {
+        display: flex;
+    }
+}
+
+/* 動画情報 */
+#video-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.video-info {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-info img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.video-info h2 {
+    font-size: 1.4em;
+    margin-top: 10px;
+}
+
+.video-info p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.video-info p strong {
+    color: #0073e6;
+}
+
+/* ヘッダーのカラー変更 */
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-title img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* フッター */
+footer {
+    background-color: #333; /* ヘッダーと同じ色 */
+    color: #fff; /* 文字色を白に */
+    padding: 20px 10%; /* 上下20px、左右10% */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+footer .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .footer-logo img {
+    width: 50px; /* ロゴのサイズ */
+    height: auto;
+}
+
+footer .footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-links ul li a {
+    color: #fff; /* リンクの色を白に */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .footer-links ul li a:hover {
+    color: #4CAF50; /* ホバー時にアクセントカラー */
+}
+
+footer .copyright {
+    font-size: 0.9em;
+    color: #ccc; /* 薄い文字色 */
+    margin-top: 10px;
+    flex-basis: 100%; /* 小さい画面で折り返す */
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer .footer-links ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* トップ画像 */
+.トップ画像{
+    max-width: 100%;  /* 親要素の幅に合わせて拡大・縮小 */
+    height: auto;     /* アスペクト比を保ちながら高さを自動調整 */
+}
+
+.キャッチコピー{
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+}
+
+/* YouTubeチャンネル登録ボタン */
+.g-ytsubscribe {
+    margin: 20px 0;
+    width: 100%; /* ボタンを親要素いっぱいに広げる */
+}
+
+/* ボタンを横並びにするためのコンテナ */
+.button-container {
+    display: flex;
+    justify-content: center; /* 中央に配置 */
+    gap: 20px; /* ボタン間の間隔 */
+    margin-top: 20px; /* 上部の余白 */
+}
+
+
+
+/* YouTubeチャンネル登録ボタンとチャンネル動画一覧ボタンを同じ大きさにする */
+.youtube-subscribe, .btn-video-channel {
+    display: inline-block; /* 隣同士に並べる */
+    width: 300px; /* 両方を同じ幅に設定 */
+    height: 60px;
+    padding: 15px 30px; /* ボタンのサイズ */
+    font-size: 16px; /* フォントサイズ */
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* YouTubeの赤いボタン */
+.btn-video-channel {
+    background-color: #FF0000; /* YouTubeの赤 */
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-video-channel:hover {
+    background-color: #cc0000; /* ホバー時の色 */
+}
+.new.video h1 {
+    text-align: center; /* 水平方向の中央揃え */
+    margin: 20px 0; /* 上下に余白を追加 */
+}
+/* リンクをボタン風にするスタイル */
+a.Personal-Security {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #047dff; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Personal-Security:hover {
+    background-color: #0056b3; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Personal-Security:active {
+    background-color: #003366; /* クリックしたときにボタンが少し暗くなる */
+}
+/* リンクをボタン風にするスタイル */
+a.me-to {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #04ff6d; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.me-to:hover {
+    background-color: #00b345; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.me-to:active {
+    background-color: #00662e; /* クリックしたときにボタンが少し暗くなる */
+}
+
+a.Contact {
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #7904ff; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Contact:hover {
+    background-color: #8f00b3; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Contact:active {
+    background-color: #3d0066; /* クリックしたときにボタンが少し暗くなる */
+}
+a.Master-videos{
+    display: inline-block; /* インラインで表示し、ブロック要素のように使える */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #ff04de; /* ボタンの背景色 */
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 16px; /* 文字サイズ */
+    text-align: center; /* 文字を中央揃え */
+    transition: background-color 0.3s ease; /* ホバー時の色変更を滑らかに */
+}
+
+/* ホバー時のスタイル */
+a.Master-videos:hover {
+    background-color: #b3008c; /* ホバー時に背景色を変更 */
+}
+
+/* クリック時のスタイル */
+a.Master-videos:active {
+    background-color: #660055; /* クリックしたときにボタンが少し暗くなる */
+}
+/* Blog section */
+#blog-posts .post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#blog-posts .post h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#blog-posts .post .post-meta {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+#blog-posts .post .read-more {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Individual post */
+#single-post h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#single-post .post-meta {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+/* ブログカードデザイン */
+#blog-posts .post {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#blog-posts .post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 見出しのデザイン */
+#blog-posts .post h3 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* 投稿のメタ情報のスタイル */
+#blog-posts .post .post-meta {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* 読み進めるボタン */
+#blog-posts .post .read-more {
+    color: #007BFF;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#blog-posts .post .read-more:hover {
+    color: #0056b3;
+}
+
+/* 個別投稿本編のスタイル */
+#single-post {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px; /* 最大幅を設定 */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 見出し（h2, h3など）のスタイル */
+#single-post h2 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+#single-post h3 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+}
+
+/* 段落（p）のスタイル */
+#single-post p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify; /* 両端揃え */
+    word-wrap: break-word; /* 長い単語の折り返し */
+}
+
+/* 引用部分のデザイン */
+#single-post blockquote {
+    background-color: #f9f9f9;
+    border-left: 5px solid #007BFF;
+    padding: 15px;
+    font-style: italic;
+    margin: 30px 0;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* リスト（ul, ol）のデザイン */
+#single-post ul, #single-post ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#single-post li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* ハイライト（強調）部分のスタイル */
+#single-post strong {
+    font-weight: bold;
+    color: #007BFF; /* 強調部分を青色に */
+}
+
+/* コードのスタイル */
+#single-post code {
+    background-color: #f4f4f4;
+    padding: 3px 6px;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+}
+/* セクション間のスペース */
+#single-post > * {
+    margin-bottom: 30px;
+}
+/* 画像のスタイル */
+#single-post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+/* リンクのスタイル */
+#single-post a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#single-post a:hover {
+    color: #0056b3;
+}
+
+/* ボタンのスタイル */
+#single-post .button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#single-post .button:hover {
+    background-color: #0056b3;
+}
+/* コンテンツエリア */
+#single-post {
+    background-color: white;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 4000px; /* コンテンツの横幅を広げる */
+    margin-left: auto;
+    margin-right: auto; /* 中央揃え */
+}
+
+#single-post h2 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+#single-post p {
+    font-size: 1.4em;
+    line-height: 1.8;
+    color: #555;
+}
+/* コンテンツエリア */
+#single-post {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
+    max-width: 4000px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease; /* ホバーで縮小・拡大する効果 */
+}
+
+#single-post:hover {
+    transform: scale(1.02); /* ホバー時に若干の拡大効果 */
+}
+
+#single-post h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 見出しに影を追加 */
+}
+
+#single-post p {
+    font-size: 1.4em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* ボタン */
+button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e57d00; /* ボタンのホバー時に色を変更 */}
+    /* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダー */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-title img {
+    height: 60px;
+}
+
+.logo-title h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* ナビゲーションメニュー */
+nav.menu {
+    display: flex;
+}
+
+nav.menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav.menu ul li {
+    margin: 0;
+}
+
+nav.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav.menu ul li a:hover {
+    background-color: #45a049;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-form input[type="search"] {
+    padding: 6px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #45a049;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #3e8e41;
+}
+
+/* ハンバーガーメニュー */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    nav.menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #4CAF50;
+    }
+
+    nav.menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
+    }
+
+    nav.menu ul li {
+        width: 100%;
+    }
+
+    nav.menu ul li a {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav.menu.active {
+        display: flex;
+    }
+}
+
+/* 動画情報 */
+#video-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.video-info {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-info img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.video-info h2 {
+    font-size: 1.4em;
+    margin-top: 10px;
+}
+
+.video-info p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.video-info p strong {
+    color: #0073e6;
+}
+
+/* ヘッダーのカラー変更 */
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+/* ロゴとタイトルの横並び */
+.logo-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-title img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* フッター */
+footer {
+    background-color: #333; /* ヘッダーと同じ色 */
+    color: #fff; /* 文字色を白に */
+    padding: 20px 10%; /* 上下20px、左右10% */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+footer .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .footer-logo img {
+    width: 50px; /* ロゴのサイズ */
+    height: auto;
+}
+
+footer .footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-links ul li a {
+    color: #fff; /* リンクの色を白に */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .footer-links ul li a:hover {
+    color: #4CAF50; /* ホバー時にアクセントカラー */
+}
+
+footer .copyright {
+    font-size: 0.9em;
+    color: #ccc; /* 薄い文字色 */
+    margin-top: 10px;
+    flex-basis: 100%; /* 小さい画面で折り返す */
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer .footer-links ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* トップ画像 */
+.トップ画像{
+    max-width: 100%;  /* 親要素の幅に合わせて拡大・縮小 */
+    height: auto;     /* アスペクト比を保ちながら高さを自動調整 */
+}
+
+.キャッチコピー{
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+}
+
+/* YouTubeチャンネル登録ボタン */
+.g-ytsubscribe {
+    margin: 20px 0;
+    width: 100%; /* ボタンを親要素いっぱいに広げる */
+}
+
+/* ボタンを横並びにするためのコンテナ */
+.button-container {
+    display: flex;
+    justify-content: center; /* 中央に配置 */
+    gap: 20px; /* ボタン間の間隔 */
+    margin-top: 20px; /* 上部の余白 */
+}
+
+/* YouTubeチャンネル登録ボタンとチャンネル動画一覧ボタンを同じ大きさにする */
+.youtube-subscribe, .btn-video-channel {
+    display: inline-block; /* 隣同士に並べる */
+    width: 300px; /* 両方を同じ幅に設定 */
+    height: 60px;
+    padding: 15px 30px; /* ボタンのサイズ */
+    font-size: 16px; /* フォントサイズ */
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* YouTubeの赤いボタン */
+.btn-video-channel {
+    background-color: #FF0000; /* YouTubeの赤 */
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-video-channel:hover {
+    background-color: #cc0000; /* ホバー時の色 */
+}
+
+/* Blog section */
+#blog-posts .post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#blog-posts .post h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#blog-posts .post .post-meta {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+#blog-posts .post .read-more {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* 個別投稿本編のスタイル */
+#single-post {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 4000px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 見出し（h2, h3など）のスタイル */
+#single-post h2 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+#single-post h3 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* 段落（p）や引用（blockquote）など */
+#single-post p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* 画像（img）やコード（code）のスタイリング */
+#single-post img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+#single-post code {
+    background-color: #f4f4f4;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+/* コメントセクション */
+#comments {
+    margin-top: 40px;
+}
+
+#comments h3 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.comment {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comment .comment-author {
+    font-weight: 700;
+    color: #333;
+}
+
+.comment .comment-body {
+    margin-top: 10px;
+    color: #555;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.comment-form button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #45a049;
+}
+/* コンテンツセクション */
+#single-post {
+    max-width: aout;
+    margin: 50px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%); /* グラデーション背景 */
+    border-radius: 12px; /* 少し丸みを持たせた角 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* 深みのあるシャドウ */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* コンテンツのヘッダー */
+#single-post h2 {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#single-post h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: #ff6600;
+    bottom: -10px;
+    left: 0;
+}
+
+/* 投稿日 */
+#single-post .post-meta {
+    font-size: 1.1em;
+    color: #888;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* 本文 */
+#single-post p {
+    font-size: 1.2em;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+#single-post p:hover {
+    color: #333;
+    transform: translateY(-2px); /* ホバー時に少し浮かせる */
+}
+
+/* ブロッククオート */
+#single-post blockquote {
+    background: #f8f8f8;
+    border-left: 5px solid #ff6600;
+    padding: 15px 20px;
+    margin: 25px 0;
+    font-style: italic;
+    font-size: 1.3em;
+    color: #555;
+}
+
+#single-post blockquote p {
+    margin: 0;
+}
+
+/* 画像のスタイル */
+#single-post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 25px 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 画像の影 */
+}
+
+/* 記事の引用リンク */
+#single-post a {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#single-post a:hover {
+    color: #ff4500;
+    text-decoration: underline;
+}
+
+/* レスポンシブデザイン（モバイル向け調整） */
+@media (max-width: 768px) {
+    #single-post {
+        padding: 25px;
+    }
+
+    #single-post h2 {
+        font-size: 2.2em;
+    }
+
+    #single-post .post-meta {
+        font-size: 1em;
+    }
+
+    #single-post p {
+        font-size: 1.1em;
+    }
+}
+#search-results {
+    margin-top: 20px;
+}
+
+.search-result {
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.search-result h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.search-result p {
+    margin-top: 5px;
+    color: #666;
+}
