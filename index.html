@@ -9,6 +9,15 @@
     <script src="script.js"></script>
 </head>
 <body>
+<div id="popup-placeholder"></div>
+<script>
+  fetch("popup.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("popup-placeholder").innerHTML = html;
+    });
+</script>
+
     <header>
         <div class="logo-title">
             <img src="ロゴ.ico" alt="サイトのロゴ">
@@ -57,6 +66,7 @@
                 チャンネルの動画一覧を見る
             </a>
         </div>
+
         <div class="new video">
             <h1>最新の動画</h1>
         </div>
@@ -102,4 +112,5 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
+
 
