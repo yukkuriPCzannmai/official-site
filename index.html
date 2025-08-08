@@ -79,9 +79,8 @@
   <h2>更新情報</h2>
   <ul id="news-list"></ul>
 </section>
-
-<script>
-  fetch('news.txt')
+<script> 
+fetch('news.txt')
     .then(response => response.text())
     .then(data => {
       const lines = data.trim().split('\n');
@@ -133,6 +132,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
+
 
 
 
