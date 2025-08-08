@@ -1,15 +1,17 @@
-const setCookie = (name, value, days) => {
+// クッキー操作関数を一箇所だけ定義
+function setCookie(name, value, days) {
   const expires = new Date();
   expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-  document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
-};
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
 
-const getCookie = (name) => {
+function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
-};
+}
 
+// popup.html を読み込んで追加
 fetch("popup.html")
   .then(res => res.text())
   .then(html => {
@@ -20,6 +22,7 @@ fetch("popup.html")
     const popup = document.getElementById('privacy-popup');
     const agreeBtn = document.getElementById('agree-button');
 
+    // スタイルと表示制御
     if (!getCookie('privacyAccepted')) {
       popup.style.display = 'flex';
       popup.style.position = 'fixed';
@@ -33,8 +36,12 @@ fetch("popup.html")
       popup.style.justifyContent = 'center';
     }
 
+    // 同意ボタンのクリック処理
     agreeBtn.addEventListener('click', () => {
       setCookie('privacyAccepted', 'true', 365);
       popup.style.display = 'none';
     });
+  })
+  .catch(error => {
+    console.error('ポップアップの読み込みに失敗しました:', error);
   });
