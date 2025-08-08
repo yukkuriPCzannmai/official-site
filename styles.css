@@ -70,7 +70,7 @@ nav.menu ul li a:hover {
     background-color: #45a049;
 }
 /*検証中*/
-.character-button {
+.PCse{
   display: flex;
   align-items: center;
   background-color: #f0f8ff;
@@ -464,6 +464,7 @@ a.Master-videos:active {
     margin-top: 5px;
     color: #666;
 }
+
 
 
 
