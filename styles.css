@@ -465,7 +465,7 @@ a.Master-videos2:hover {
 
 /* クリック時のスタイル */
 a.Master-videos2:active {
-    background-color: #FF0020; /* クリックしたときにボタンが少し暗くなる */
+    background-color: #dc143c; /* クリックしたときにボタンが少し暗くなる */
 }
 #search-results {
     margin-top: 20px;
@@ -486,6 +486,7 @@ a.Master-videos2:active {
     margin-top: 5px;
     color: #666;
 }
+
 
 
 
