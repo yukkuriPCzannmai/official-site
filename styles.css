@@ -460,12 +460,12 @@ a.Master-videos2{
 
 /* ホバー時のスタイル */
 a.Master-videos2:hover {
-    background-color: #b3008c; /* ホバー時に背景色を変更 */
+    background-color: #FF0000 /* ホバー時に背景色を変更 */
 }
 
 /* クリック時のスタイル */
 a.Master-videos2:active {
-    background-color: #660055; /* クリックしたときにボタンが少し暗くなる */
+    background-color: #FF0020; /* クリックしたときにボタンが少し暗くなる */
 }
 #search-results {
     margin-top: 20px;
@@ -486,6 +486,7 @@ a.Master-videos2:active {
     margin-top: 5px;
     color: #666;
 }
+
 
 
 
