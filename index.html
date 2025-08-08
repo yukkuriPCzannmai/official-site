@@ -11,14 +11,6 @@
     <script src="popup.js"></script>
 </head>
 <body>
-<div id="popup-placeholder"></div>
-<script>
-  fetch("popup.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("popup-placeholder").innerHTML = html;
-    });
-</script>
 
     <header>
         <div class="logo-title">
@@ -76,6 +68,9 @@
             <!-- 各動画の情報がここに追加されます -->
         </div>
 <section id="news">
+<div class="character-button">
+ <img src="魔理沙.png" alt="ゆっくりキャラ1">
+  <div class="text">
   <h1>更新情報</h1>
   <ul id="news-list"></ul>
 </section>
@@ -92,6 +87,8 @@ fetch('news.txt')
       });
     });
 </script>
+  </div>
+</div>
 <div class="character-button">
   <img src="うp主(右向き).png" alt="ゆっくりキャラ1">
   <div class="text">
@@ -142,6 +139,7 @@ fetch('news.txt')
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
+
 
 
 
