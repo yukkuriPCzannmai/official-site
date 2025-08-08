@@ -52,6 +52,31 @@
     </header>
     
     <section id="blog-posts">
+<!-- blog.html 内 -->
+<section id="category-filter">
+  <button onclick="filterByCategory('すべて')">すべて</button>
+  <button onclick="filterByCategory('最適化')">最適化</button>
+  <button onclick="filterByCategory('セキュリティ')">セキュリティ</button>
+</section>
+
+<input type="text" id="tag-input" placeholder="タグで絞り込み..." oninput="filterByTags(this.value)">
+
+<section id="blog-list">
+  <article class="blog-preview" data-category="最適化" data-tags="Windows,メモリ">
+    <h3><a href="optimize.html">PCの最適化方法について</a></h3>
+    <p class="post-meta">2025年1月20日</p>
+    <p class="excerpt">PCを速くするためのコツを紹介します。</p>
+  </article>
+
+  <article class="blog-preview" data-category="セキュリティ" data-tags="パスワード,Google">
+    <h3><a href="security.html">パスワード管理の基本</a></h3>
+    <p class="post-meta">2025年1月25日</p>
+    <p class="excerpt">パスワードを安全に使う方法を説明します。</p>
+  </article>
+</section>
+
+<div id="pagination"></div>
+
         <h2>最新のブログ記事</h2>
 
         <article class="post">
@@ -94,6 +119,7 @@
 
 </body>
 </html>
+
 
 
 
