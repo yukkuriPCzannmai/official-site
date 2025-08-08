@@ -87,7 +87,7 @@ const fetchLatestVideos = async () => {
 // 最新の動画情報を取得
 fetchLatestVideos();
 
-<script>
+
     const popup = document.getElementById('privacy-popup');
     const agreeBtn = document.getElementById('agree-button');
 
@@ -114,5 +114,6 @@ fetchLatestVideos();
       setCookie('privacyAccepted', 'true', 365);
       popup.style.display = 'none';
     });
+
 
 
