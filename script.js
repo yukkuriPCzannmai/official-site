@@ -87,6 +87,59 @@ const fetchLatestVideos = async () => {
 // 最新の動画情報を取得
 fetchLatestVideos();
 
+const articlesPerPage = 3;
+let currentPage = 1;
+
+function filterByCategory(category) {
+  const articles = document.querySelectorAll('.blog-preview');
+  articles.forEach(article => {
+    const cat = article.dataset.category;
+    if (category === 'すべて' || cat === category) {
+      article.style.display = 'block';
+    } else {
+      article.style.display = 'none';
+    }
+  });
+}
+
+function filterByTags(input) {
+  const keyword = input.toLowerCase();
+  const articles = document.querySelectorAll('.blog-preview');
+  articles.forEach(article => {
+    const tags = article.dataset.tags.toLowerCase();
+    article.style.display = tags.includes(keyword) ? 'block' : 'none';
+  });
+}
+
+function showPage(page) {
+  const articles = document.querySelectorAll('.blog-preview');
+  const start = (page - 1) * articlesPerPage;
+  const end = start + articlesPerPage;
+
+  articles.forEach((article, index) => {
+    article.style.display = (index >= start && index < end) ? 'block' : 'none';
+  });
+
+  currentPage = page;
+  updatePagination(articles.length);
+}
+
+function updatePagination(totalArticles) {
+  const totalPages = Math.ceil(totalArticles / articlesPerPage);
+  const pagination = document.getElementById('pagination');
+  pagination.innerHTML = '';
+
+  for (let i = 1; i <= totalPages; i++) {
+    pagination.innerHTML += `<button onclick="showPage(${i})">${i}</button>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  showPage(1);
+});
+
+
+
 
 
 
