@@ -75,6 +75,25 @@
         <div id="video-list">
             <!-- 各動画の情報がここに追加されます -->
         </div>
+<section id="news">
+  <h2>更新情報</h2>
+  <ul id="news-list"></ul>
+</section>
+
+<script>
+  fetch('news.txt')
+    .then(response => response.text())
+    .then(data => {
+      const lines = data.trim().split('\n');
+      const list = document.getElementById('news-list');
+      lines.forEach(line => {
+        const li = document.createElement('li');
+        li.textContent = line;
+        list.appendChild(li);
+      });
+    });
+</script>
+
         <h1>ゆっくりPC三昧ってどんなチャンネル？</h1>
         <p>ゆっくりPC三昧はゆっくりキャラを用いてパソコンについて解説しているチャンネルです。
         </p>
@@ -114,6 +133,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
+
 
 
 
