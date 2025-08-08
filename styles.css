@@ -449,7 +449,7 @@ a.Master-videos:active {
 a.Master-videos2{
     display: inline-block; /* インラインで表示し、ブロック要素のように使える */
     padding: 10px 20px; /* 内側の余白 */
-    background-color: #ff04de; /* ボタンの背景色 */
+    background-color: #FF0000; /* ボタンの背景色 */
     color: white; /* 文字色 */
     text-decoration: none; /* 下線を消す */
     border-radius: 5px; /* ボタンの角を丸くする */
@@ -460,7 +460,7 @@ a.Master-videos2{
 
 /* ホバー時のスタイル */
 a.Master-videos2:hover {
-    background-color: #FF0000 /* ホバー時に背景色を変更 */
+    background-color: #FF9090 /* ホバー時に背景色を変更 */
 }
 
 /* クリック時のスタイル */
@@ -486,6 +486,7 @@ a.Master-videos2:active {
     margin-top: 5px;
     color: #666;
 }
+
 
 
 
