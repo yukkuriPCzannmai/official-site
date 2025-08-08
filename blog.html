@@ -55,14 +55,15 @@
 <!-- blog.html 内 -->
 <section id="category-filter">
   <button onclick="filterByCategory('すべて')">すべて</button>
-  <button onclick="filterByCategory('最適化')">最適化</button>
+  <button onclick="filterByCategory('アプリ')">アプリ</button>
   <button onclick="filterByCategory('セキュリティ')">セキュリティ</button>
+<button onclick="filterByCategory('その他')">その他</button>
 </section>
 
 <input type="text" id="tag-input" placeholder="タグで絞り込み..." oninput="filterByTags(this.value)">
 
 <section id="blog-list">
-  <article class="blog-preview" data-category="最適化" data-tags="Windows,メモリ">
+  <article class="blog-preview" data-category="その他" data-tags="Windows,メモリ">
     <h3><a href="blog1.html">PCの最適化方法について</a></h3>
     <p class="post-meta">2025年1月20日</p>
     <p class="excerpt">PCを速くするためのコツを紹介します。</p>
@@ -97,6 +98,7 @@
 
 </body>
 </html>
+
 
 
 
