@@ -453,10 +453,7 @@ a.Master-videos:active {
    
 }
 
-#blog-posts .post:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+
 
 /* 見出しのデザイン */
 #blog-posts .post h3 {
@@ -1231,6 +1228,7 @@ footer .copyright {
     margin-top: 5px;
     color: #666;
 }
+
 
 
 
