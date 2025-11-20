@@ -630,7 +630,7 @@ a.Master-videos:active {
     max-width: 4000px;
     margin-left: auto;
     margin-right: auto;
-    transition: transform 0.3s ease; /* ホバーで縮小・拡大する効果 */
+  /* ホバーで縮小・拡大する効果 */
 }
 
 #single-post:hover {
@@ -1039,6 +1039,7 @@ footer .copyright {
     line-height: 1.6;
     color: #555;
     margin-bottom: 15px;
+     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* 画像（img）やコード（code）のスタイリング */
