@@ -577,7 +577,7 @@ a.Master-videos:active {
     color: #007BFF;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    
 }
 
 #single-post a:hover {
@@ -1231,5 +1231,6 @@ footer .copyright {
     margin-top: 5px;
     color: #666;
 }
+
 
 
