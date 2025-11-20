@@ -1156,10 +1156,6 @@ footer .copyright {
     transition: all 0.3s ease;
 }
 
-#single-post p:hover {
-    color: #333;
-    transform: translateY(-2px); /* ホバー時に少し浮かせる */
-}
 
 /* ブロッククオート */
 #single-post blockquote {
@@ -1234,3 +1230,4 @@ footer .copyright {
     margin-top: 5px;
     color: #666;
 }
+
