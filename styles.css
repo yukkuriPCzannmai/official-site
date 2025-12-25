@@ -487,12 +487,6 @@ a.Master-videos2:active {
     color: #666;
 }
 
-
-
-
-
-
-
-
-
-
+.red-box {
+  background-color: red; /* または #FF0000 */
+}
