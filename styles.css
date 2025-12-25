@@ -346,7 +346,7 @@ footer .copyright {
 
 /* YouTubeの赤いボタン */
 .btn-video-channel {
-    background-color: #FF0000; /* YouTubeの赤 */
+    background-color: #c20000; /* YouTubeの赤 */
     color: #fff;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -490,4 +490,5 @@ a.Master-videos2:active {
 .red-box {
   background-color: black; /* または #FF0000 */
 }
+
 
