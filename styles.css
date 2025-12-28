@@ -324,12 +324,7 @@ footer .copyright {
 }
 
 /* ボタンを横並びにするためのコンテナ */
-.button-container {
-    display: flex;
-    justify-content: center; /* 中央に配置 */
-    gap: 20px; /* ボタン間の間隔 */
-    margin-top: 20px; /* 上部の余白 */
-}
+
 
 
 
@@ -487,11 +482,50 @@ a.Master-videos2:active {
     color: #666;
 }
 
-.red-box {
-  background-color: #222222; /* または #FF0000 */
-  flex-basis: 100%;
+
+
+
+/* ボタン全体をまとめるコンテナ */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* 画面が狭いときに自動で折り返す */
+    gap: 20px;       /* ボタン同士の間隔 */
+    margin: 30px 0;
+    width: 100%;
 }
 
+/* 黒いボックス（発掘動画の背景） */
+.red-box {
+    background-color: #222222; /* 指定の黒色 */
+    padding: 10px;             /* 黒い縁取りを作る */
+    border-radius: 8px;        /* 少し角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* ボタンの共通スタイル（赤色） */
+.btn-video-channel {
+    display: inline-block;
+    width: 300px;              /* サイズを統一 */
+    height: 60px;
+    line-height: 30px;         /* 文字の位置調整 */
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #c20000; /* YouTubeの赤 */
+    color: #fff;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+}
 
-
+/* ホバーしたときのアクション */
+.btn-video-channel:hover {
+    background-color: #ff0000; /* 明るい赤に */
+    transform: scale(1.05);    /* 少し大きくして個性を出す */
+}
