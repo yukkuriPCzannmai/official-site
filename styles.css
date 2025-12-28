@@ -489,7 +489,9 @@ a.Master-videos2:active {
 
 .red-box {
   background-color: #222222; /* または #FF0000 */
+  flex-basis: 100%;
 }
+
 
 
 
