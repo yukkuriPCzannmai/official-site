@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+
+    menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+});
 const API_KEY = 'AIzaSyDIWSDYy2c0NPI_JAL9ISVMVbkhhcqk2ZM'; // YouTube Data APIのAPIキー
 const CHANNEL_ID = 'UCSMJlaoba1qvXE5mjnajOkA'; // チャンネルID
 
@@ -91,6 +99,7 @@ fetchLatestVideos();
       setCookie('privacyAccepted', 'true', 365);
       popup.style.display = 'none';
     });
+
 
 
 
