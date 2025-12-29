@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".menu");
 
@@ -115,5 +116,6 @@ const fetchLatestVideos = async () => {
 
 // 最新の動画情報を取得
 fetchLatestVideos();
+
 
 
