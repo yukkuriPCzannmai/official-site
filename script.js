@@ -37,7 +37,7 @@ const fetchLatestVideos = async () => {
         let videoCount = 0;
 
         // 最大3つの動画だけを取得する
-        let maxVideos = 3;
+        let maxVideos = 5;
 
         // ページネーション対応
         do {
@@ -137,6 +137,7 @@ function updatePagination(totalArticles) {
 document.addEventListener('DOMContentLoaded', () => {
   showPage(1);
 });
+
 
 
 
