@@ -37,7 +37,7 @@ const fetchLatestVideos = async () => {
         let videoCount = 0;
 
         // 最大3つの動画だけを取得する
-        let maxVideos = 5;
+        let maxVideos = 3;
 
         // ページネーション対応
         do {
@@ -145,3 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+// 修正：ページが読み込まれたら、自動的に「すべて」のフィルタリングを実行する
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. まず「すべて」のカテゴリーで絞り込みを実行（これで全部出る！）
+    filterByCategory('すべて');
+
+    // 2. もし他にも初期化したいことがあればここに書く
+    // showPage(1); // ページネーションを使いたい場合はこれを活かす
+});
