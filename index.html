@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF4VD8D4HC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-TF4VD8D4HC');
+  </script>
+
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゆっくりPC三昧公式サイト</title>
+  <link rel="icon" href="ロゴ.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- OGP -->
+  <meta property="og:title" content="ゆっくりPC三昧 公式サイト" />
+  <meta property="og:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yukkuripczannmai.github.io/official-site/index.html" />
+  <meta property="og:image" content="バナー画像.jpg" />
+
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ゆっくりPC三昧 公式サイト" />
+  <meta name="twitter:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+  <meta name="twitter:image" content="バナー画像.jpg" />
+  <meta name="google-site-verification" content="v1p5_97U2oXczL7SMSivi4DtCAwCjVPkCqdKGJ7EaCM" />
+
+  <script src="script.js"></script>
+  <!-- HTMLファイルの最後、</body>の直前が推奨 -->
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ38QWKR" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header>
+    <div class="logo-title">
+      <img src="ロゴ.ico" alt="サイトのロゴ">
+      <h1>ゆっくりPC三昧公式サイト</h1>
+    </div>
+    <button class="menu-toggle" aria-label="メニューを開閉">☰</button>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="about.html">私たちについて</a></li>
+        <li><a href="blog.html">チャンネルブログ</a></li>
+        <li><a href="videos.html">動画情報</a></li>
+        <script async src="https://cse.google.com/cse.js?cx=309847e2fa82f4d92">
+        </script>
+        <div class="gcse-search"></div>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- メインコンテンツ -->
+    <img class="トップ画像" src="バナー画像.jpg">
+    <h1 class="キャッチコピー">PCの楽しさ、有意義な情報をサクッと楽しくゆっくり解説</h1>
+
+    <!-- ボタンを横並びにするためのコンテナ -->
+    <div class="button-container">
+      <!-- YouTubeチャンネル登録ボタン -->
+      <div class="youtube-subscribe">
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <div class="g-ytsubscribe" data-channelid="UCSMJlaoba1qvXE5mjnajOkA" data-layout="default" data-theme="default"
+          data-count="default">
+        </div>
+      </div>
+
+      <!-- チャンネルの動画一覧に飛ばすボタン -->
+      <a href="https://www.youtube.com/@yukkuriPCzanmai/videos" target="_blank" class="btn-video-channel">
+        チャンネルの動画一覧を見る
+      </a>
+      <div class="red-box">
+        <a href="https://www.youtube.com/playlist?list=PLMnsd57fNW3zvfWkD-x8Zk5VoEBXevnfx" target="_blank"
+          class="btn-video-channel">
+          運営からの発掘動画
+        </a>
+      </div>
+
+    </div>
+
+    <div class="new video">
+      <h1>最新の動画</h1>
+    </div>
+    <div id="video-list">
+      <!-- 各動画の情報がここに追加されます -->
+    </div>
+    <section id="news">
+      <div class="character-button">
+        <img src="魔理沙.png" alt="ゆっくりキャラ1">
+        <div class="text">
+          <h1>更新情報</h1>
+          <ul id="news-list"></ul>
+    </section>
+    <script>
+      fetch('news.txt')
+        .then(response => response.text())
+        .then(data => {
+          const lines = data.trim().split('\n');
+          const list = document.getElementById('news-list');
+          lines.forEach(line => {
+            const li = document.createElement('li');
+            li.textContent = line;
+            list.appendChild(li);
+          });
+        });
+    </script>
+    </div>
+    </div>
+    <div class="character-button">
+      <img src="うp主(右向き).png" alt="ゆっくりキャラ1">
+      <div class="text">
+        <h2>ゆっくりPC三昧ってどんなチャンネル？</h2>
+        <p>ゆっくりPC三昧はゆっくりキャラを用いてパソコンについて解説しているチャンネルです。</p>
+      </div>
+    </div>
+
+    <div class="character-button">
+      <img src="ルーミア.png" alt="ゆっくりキャラ2">
+      <div class="text">
+        <h2>このチャンネルの方針</h2>
+        <p>このチャンネルは初心者さんが簡単についていきやすくするためゆっくりわかりやすくしています<br>
+          もっとわかりやすい動画を目指して頑張ります<br>
+          特にこれわからなかったなどのコメントがありますと次回からわかりやすくなるような参考資料にさせていただきます<br>
+          ゆっくりみんなで勉強していこう！！！</p>
+      </div>
+    </div>
+
+    </p>
+    <div class="Navigator in home">
+      <h1>サイトマップ</h1>
+      <a href="利用規約.html" class="Personal-Security">利用規約</a>
+      <a href="about.html" class="me-to"> 私達について</a>
+      <a href="contact.html" class="Contact"> お問い合わせ</a>
+      <a href="videos.html" class="Master-videos"> 動画情報</a>
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="footer-logo">
+      <img src="ロゴ.ico" alt="フッターロゴ">
+      <span>ゆっくりPC三昧</span>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="about.html">私たちについて</a></li>
+        <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+        <li><a href="利用規約.html">プライバシー</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      &copy; 2026 ゆっくりPC三昧. 全著作権を保持します。
+    </div>
+  </footer>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+
+</html>

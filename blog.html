@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PQ38QWKR');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゆっくりPC三昧公式サイト</title>
+  <link rel="icon" href="ロゴ.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* 【重要】ここが「小っちゃく」する魔法の数字です */
+    body {
+      background-color: #f4f7f6;
+      margin: 0;
+      background: #f7f8fa;
+    }
+
+    .post-content {
+      background: white;
+      padding: 60px 50px;
+      border-radius: 14px;
+    }
+
+    /* 画面中央に、適切な幅で表示 */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 1行に3〜4つ並ぶグリッド設定 */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* カードのサイズを固定して「デカすぎ」を阻止 */
+    .blog-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* サムネイルを小さく固定 */
+    .blog-card img {
+      width: 100%;
+      height: 160px;
+      /* 縦幅を160pxに固定 */
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+      height: 2.8em;
+      overflow: hidden;
+    }
+
+    .card-content p {
+      font-size: 0.8rem;
+      color: #888;
+      margin: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="blog.css">
+  <!-- OGP -->
+  <meta property="og:title" content="ゆっくりPC三昧 公式サイト" />
+  <meta property="og:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yukkuripczannmai.github.io/official-site/index.html" />
+  <meta property="og:image" content="バナー画像.jpg" />
+
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ゆっくりPC三昧 公式サイト" />
+  <meta name="twitter:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+  <meta name="twitter:image" content="バナー画像.jpg" />
+  <meta name="google-site-verification" content="v1p5_97U2oXczL7SMSivi4DtCAwCjVPkCqdKGJ7EaCM" />
+  <script src="script.js"></script>
+  <!-- HTMLファイルの最後、</body>の直前が推奨 -->
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ38QWKR" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header>
+    <div class="logo-title">
+      <img src="ロゴ.ico" alt="サイトのロゴ">
+      <h1>ゆっくりPC三昧公式ブログ</h1>
+    </div>
+    <button class="menu-toggle" aria-label="メニューを開閉">☰</button>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="about.html">私たちについて</a></li>
+        <li><a href="blog.html">チャンネルブログ</a></li>
+        <li><a href="videos.html">動画情報</a></li>
+        <li>
+          <!-- ヘッダーの検索フォーム -->
+          <script async src="https://cse.google.com/cse.js?cx=309847e2fa82f4d92">
+          </script>
+          <div class="gcse-search"></div>
+          <!-- 検索結果表示エリア -->
+          <div id="search-results"></div>
+
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <article class="post-content">
+
+
+    <div id="blog-list" class="blog-grid">
+      <p>記事を読み込んでいます...</p>
+    </div>
+
+    <script>
+      (function () {
+        fetch("/api/getPosts")
+          .then(res => res.json())
+          .then(data => {
+            const listElement = document.getElementById("blog-list");
+            if (!listElement) return; // 要素がない場合のガード
+            listElement.innerHTML = "";
+
+            data.contents.forEach(post => {
+              const card = document.createElement("div");
+              card.className = "blog-card";
+              card.innerHTML = `
+          <a href="post.html?id=${post.id}">
+            <img src="${post.eyecatch ? post.eyecatch.url : ''}">
+            <div class="card-content">
+              <h3>${post.title}</h3>
+              <p>${new Date(post.publishedAt).toLocaleDateString()} 更新</p>
+            </div>
+          </a>
+        `;
+              listElement.appendChild(card);
+            });
+          }) // ← ここが抜けていたよ！
+          .catch(err => console.error("Fetch error:", err));
+      })(); // 即時関数の閉じ
+    </script>
+  </article>
+  <footer>
+    <div class="footer-logo">
+      <img src="ロゴ.ico" alt="フッターロゴ">
+      <span>ゆっくりPC三昧</span>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="about.html">私たちについて</a></li>
+        <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+        <li><a href="利用規約.html">プライバシー</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      &copy; 2026 ゆっくりPC三昧. 全著作権を保持します。
+    </div>
+  </footer>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+
+</html>

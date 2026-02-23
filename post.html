@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ詳細 | ゆっくりPC三昧</title>
+    <link rel="icon" href="ロゴ.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+
+    <style>
+        main {
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+        }
+
+        body {
+            background: #f7f8fa;
+        }
+
+        .blog-body {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .blog-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        h1 {
+            margin: 20px 0 10px;
+            font-size: 1.8rem;
+        }
+
+        .meta {
+            color: #888;
+            margin-bottom: 30px;
+        }
+    </style>
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="ロゴ.ico" alt="サイトのロゴ" style="width:40px; height:40px;">
+            <h1>ゆっくりPC三昧公式ブログ</h1>
+        </div>
+        <button class="menu-toggle" aria-label="メニューを開閉">☰</button>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="about.html">私たちについて</a></li>
+                <li><a href="blog.html">チャンネルブログ</a></li>
+                <li><a href="videos.html">動画情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="post-content">
+        <p>記事を読み込んでいます...</p>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <span>ゆっくりPC三昧</span>
+        </div>
+        <div class="copyright">
+            &copy; 2026 ゆっくりPC三昧.
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const contentId = urlParams.get("id");
+
+            if (!contentId) {
+                document.getElementById("post-content").innerHTML = "<p>記事IDが見つかりません。</p>";
+                return;
+            }
+
+            fetch(`/api/getPost?id=${contentId}`)
+                .then(res => res.json())
+                .then(post => {
+                    document.getElementById("post-content").innerHTML = `
+                    <h1>${post.title}</h1>
+                    <p class="meta">${new Date(post.publishedAt).toLocaleDateString()} 更新</p>
+                    <div class="blog-body">${post.content}</div>
+                `;
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById("post-content").innerHTML = "<p>記事の取得に失敗しました。</p>";
+                });
+        })();
+    </script>
+</body>
+
+</html>
