@@ -268,8 +268,9 @@ main {
 .character-button .text p {
     font-size: 0.95rem;
     margin: 0;
-    color: #B0BEC5;
+   color: #666;
     line-height: 1.7;
+   
 }
 
 /* --- 更新情報セクション --- */
@@ -640,4 +641,5 @@ footer .copyright {
 .search-form button:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+
 }
