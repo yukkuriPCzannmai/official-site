@@ -151,7 +151,7 @@
 
     <script>
       (function () {
-        fetch("/api/getPosts")
+        fetch("/api/getPost")
           .then(res => res.json())
           .then(data => {
             const listElement = document.getElementById("blog-list");
@@ -196,5 +196,6 @@
 
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
+
 
 </html>
