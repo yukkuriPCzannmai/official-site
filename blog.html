@@ -151,7 +151,7 @@
 
     <script>
       (function () {
-        fetch("/api/getPost")
+        fetch("/api/getPosts")
           .then(res => res.json())
           .then(data => {
             const listElement = document.getElementById("blog-list");
@@ -199,3 +199,4 @@
 
 
 </html>
+
