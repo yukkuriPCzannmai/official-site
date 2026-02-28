@@ -6,7 +6,7 @@ export async function onRequest(context) {
   const pageToken = searchParams.get('pageToken') || '';
   
   // ここに自分のYouTube APIキーを入れる
-  const API_KEY = "context.env.YOUTUBE_API_KEY";
+  const API_KEY = context.env.YOUTUBE_API_KEY;
 
   let url = "";
   if (action === 'channel') {
