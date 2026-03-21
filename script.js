@@ -1,5 +1,5 @@
   // 今のドメインが github.io を含んでいるかチェック
-  if (window.location.hostname.includes("github.io")) {
+  if (window.location.hostname.includes("git")) {
     window.location.replace("https://ypz-official-site.pages.dev" + window.location.pathname);
   }
 
