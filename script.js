@@ -1,7 +1,18 @@
   // 今のドメインが github.io を含んでいるかチェック
-if (window.location.hostname.includes("git")) {
-  window.location.replace("https://ypz-official-site.pages.dev/");
-}
+
+  // 1. GitHub Pages (github.io) にいるときだけ実行
+  if (window.location.hostname.includes("git")) {
+    
+    // 2. 今のパス（例: /official-site/index.html）を取得
+    let path = window.location.pathname;
+    
+    // 3. 先頭の "/official-site" を空文字に置き換えて削る
+    // これで "/official-site/page.html" が "/page.html" になる
+    let newPath = path.replace(/^\/official-site/, "");
+    
+    // 4. 新しいドメインに、掃除したパスをくっつけてリダイレクト
+    window.location.replace("https://ypz-official-site.pages.dev" + newPath);
+  }
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
