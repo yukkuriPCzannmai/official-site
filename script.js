@@ -1,7 +1,7 @@
   // 今のドメインが github.io を含んでいるかチェック
-  if (window.location.hostname.includes("git")) {
-    window.location.replace("https://ypz-official-site.pages.dev" + window.location.pathname);
-  }
+if (window.location.hostname.includes("git")) {
+  window.location.replace("https://ypz-official-site.pages.dev/");
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
