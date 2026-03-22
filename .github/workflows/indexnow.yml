@@ -14,14 +14,18 @@ jobs:
 
       - name: Get All URLs and Submit
         run: |
-          # 1. microCMSからブログ記事IDを取得してURLを作る
+          # 1. microCMSからブログ記事IDを取得
           curl -H "X-MICROCMS-API-KEY: ${{ secrets.MICROCMS_API_KEY }}" \
           "https://yukkuripczanmai.microcms.io/api/v1/blogs?fields=id&limit=100" \
           | jq -r '.contents[].id' \
           | sed 's|^|https://ypz-official-site.pages.dev/post?id=|' > urls.txt
 
           # 2. GitHub内のHTMLファイル（紹介ページなど）を探して追加
-          find . -maxdepth 1 -name "*.html" ! -name "index.html" | sed 's|^\./||' | sed 's/\.html$//' | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
+          # 404や500、エラー系、Google認証用などは除外するよ
+          find . -maxdepth 1 -name "*.html" ! -name "index.html" \
+          | grep -vE "401|403|404|500|503|google|popup" \
+          | sed 's|^\./||' | sed 's/\.html$//' \
+          | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
           
           # 3. トップページ(ルート)を確実に追加
           echo "https://ypz-official-site.pages.dev/" >> urls.txt
@@ -29,15 +33,15 @@ jobs:
           # 4. 重複を消して整理
           sort -u urls.txt -o urls.txt
 
-          # 5. 作ったURLリストを画面に表示（デバッグ用）
-          cat urls.txt
-
-          # 6. Bingに送信
+          # 5. URLリストをJSON形式に安全に変換して送信 (ここを修正したよ！)
+          # jqを使って、URLの中に ? があっても壊れないようにしたよ
+          URL_LIST_JSON=$(jq -R . urls.txt | jq -s .)
+          
           curl -X POST "https://www.bing.com/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
-          -d '{
-            "host": "ypz-official-site.pages.dev",
-            "key": "fbc95f59f2ea4f08a30be6882a775cd1",
-            "keyLocation": "https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a775cd1.txt",
-            "urlList": '$(jq -Rs 'split("\n") | map(select(length > 0))' urls.txt)'
-          }'
+          -d "{
+            \"host\": \"ypz-official-site.pages.dev\",
+            \"key\": \"fbc95f59f2ea4f08a30be6882a775cd1\",
+            \"keyLocation\": \"https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a44e8a0caf88bfa.txt\",
+            \"urlList\": $URL_LIST_JSON
+          }"
