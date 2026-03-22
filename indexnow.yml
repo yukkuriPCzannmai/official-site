@@ -1,29 +1,33 @@
-name: IndexNow
+name: IndexNow Auto Sync
 
 on:
-  push:
-    branches:
-      - main # GitHubのメインブランチがこれならそのままでOK！
+  repository_dispatch:
+    types: [cms_update] # microCMSの更新通知を受け取る設定
+  workflow_dispatch:      # 手動でも実行できるようにしておく
 
 jobs:
-  check-and-submit:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 1. まずはGitHubからファイルを取得する
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Get Blog IDs and Submit to IndexNow
+        run: |
+          # 1. microCMSから全記事のIDを取得してURLリスト(urls.txt)を作る
+          # ※ 自分のサービスドメイン(yukkuripczanmai)に合わせてるよ
+          curl -H "X-MICROCMS-API-KEY: ${{ secrets.MICROCMS_API_KEY }}" \
+          "https://yukkuripczanmai.microcms.io/api/v1/blogs?fields=id&limit=100" \
+          | jq -r '.contents[].id' \
+          | sed 's|^|https://ypz-official-site.pages.dev/post?id=|' > urls.txt
 
-      # 2. 自動でサイトマップ(sitemap.xml)を作成する
-      - name: Generate Sitemap
-        uses: cicirello/generate-sitemap@v1
-        with:
-          base-url-path: https://ypz-official-site.pages.dev/
-          
-      # 3. できたサイトマップを使ってBingに通知する
-      - name: Submit to IndexNow
-        uses: jakob-bagterp/index-now-submit-sitemap-urls-action@v1
-        with:
-          host: 'ypz-official-site.pages.dev' # https:// は入れないよ
-          sitemap_locations: 'https://ypz-official-site.pages.dev/sitemap.xml'
-          api_key: 'fbc95f59f2ea4f08a30be6882a775cd1'
-          api_key_location: 'https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a775cd1.txt'
+          # 2. ついでにトップページとブログ一覧ページも追加
+          echo "https://ypz-official-site.pages.dev/" >> urls.txt
+          echo "https://ypz-official-site.pages.dev/blog" >> urls.txt
+
+          # 3. 作ったリストをBing IndexNowに送信
+          curl -X POST "https://www.bing.com/indexnow" \
+          -H "Content-Type: application/json; charset=utf-8" \
+          -d '{
+            "host": "ypz-official-site.pages.dev",
+            "key": "fbc95f59f2ea4f08a30be6882a775cd1",
+            "keyLocation": "https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a775cd1.txt",
+            "urlList": '$(jq -Rs 'split("\n") | map(select(length > 0))' urls.txt)'
+          }'
