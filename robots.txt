@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ypz-official-site.pages.dev/sitemap.xml
