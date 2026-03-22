@@ -69,7 +69,7 @@ header {
     min-height: 70px;
     border-bottom: 2px solid rgba(0, 229, 255, 0.15);
 }
-.search-wrapper {
+.serch{
     max-width: 300px;
     /* ここを好みの幅に変えてね */
     margin-left: auto;
