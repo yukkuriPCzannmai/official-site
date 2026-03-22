@@ -1,4 +1,18 @@
-- name: Get All URLs and Submit
+name: IndexNow Auto Sync
+
+on:
+  repository_dispatch:
+    types: [cms_update]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get All URLs and Submit
         run: |
           # 1. microCMSからブログ記事IDを取得してURLを作る
           curl -H "X-MICROCMS-API-KEY: ${{ secrets.MICROCMS_API_KEY }}" \
@@ -7,8 +21,7 @@
           | sed 's|^|https://ypz-official-site.pages.dev/post?id=|' > urls.txt
 
           # 2. GitHub内のHTMLファイル（紹介ページなど）を探して追加
-          # index.html, blog.html, profile.html などを自動抽出
-          find . -name "*.html" ! -name "index.html" | sed 's|^\./||' | sed 's/\.html$//' | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
+          find . -maxdepth 1 -name "*.html" ! -name "index.html" | sed 's|^\./||' | sed 's/\.html$//' | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
           
           # 3. トップページ(ルート)を確実に追加
           echo "https://ypz-official-site.pages.dev/" >> urls.txt
@@ -16,7 +29,10 @@
           # 4. 重複を消して整理
           sort -u urls.txt -o urls.txt
 
-          # 5. Bingに送信
+          # 5. 作ったURLリストを画面に表示（デバッグ用）
+          cat urls.txt
+
+          # 6. Bingに送信
           curl -X POST "https://www.bing.com/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
           -d '{
