@@ -69,6 +69,15 @@ header {
     min-height: 70px;
     border-bottom: 2px solid rgba(0, 229, 255, 0.15);
 }
+.search-wrapper {
+    max-width: 300px;
+    /* ここを好みの幅に変えてね */
+    margin-left: auto;
+    /* 右寄せにするならこれ */
+    margin-right: 20px;
+    /* 画面端から少し離す */
+}
+
 
 .logo-title {
     display: flex;
