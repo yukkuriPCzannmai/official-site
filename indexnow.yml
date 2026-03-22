@@ -3,16 +3,27 @@ name: IndexNow
 on:
   push:
     branches:
-      - main # 自分のメインブランチ名に合わせてね
+      - main # GitHubのメインブランチがこれならそのままでOK！
 
 jobs:
   check-and-submit:
     runs-on: ubuntu-latest
     steps:
+      # 1. まずはGitHubからファイルを取得する
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. 自動でサイトマップ(sitemap.xml)を作成する
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://ypz-official-site.pages.dev/
+          
+      # 3. できたサイトマップを使ってBingに通知する
       - name: Submit to IndexNow
         uses: jakob-bagterp/index-now-submit-sitemap-urls-action@v1
         with:
-          host: 'https://ypz-official-site.pages.dev/'
+          host: 'ypz-official-site.pages.dev' # https:// は入れないよ
           sitemap_locations: 'https://ypz-official-site.pages.dev/sitemap.xml'
-          api_key: 'さっき発行したAPIキー'
-          api_key_location: 'https://あなたのドメイン.com/さっきのファイル名.txt'
+          api_key: 'fbc95f59f2ea4f08a30be6882a775cd1'
+          api_key_location: 'https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a775cd1.txt'
