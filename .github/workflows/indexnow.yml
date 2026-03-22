@@ -4,6 +4,8 @@ on:
   repository_dispatch:
     types: [cms_update]
   workflow_dispatch:
+  push:
+    branches: [main] # mainブランチにプッシュされた時も動くようにする
 
 jobs:
   build:
@@ -11,6 +13,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: main # 強制的にmainブランチのファイルを使う
 
       - name: Get All URLs and Submit
         run: |
@@ -21,27 +25,31 @@ jobs:
           | sed 's|^|https://ypz-official-site.pages.dev/post?id=|' > urls.txt
 
           # 2. GitHub内のHTMLファイル（紹介ページなど）を探して追加
-          # 404や500、エラー系、Google認証用などは除外するよ
+          # 隠しフォルダ以外からHTMLを探す
           find . -maxdepth 1 -name "*.html" ! -name "index.html" \
           | grep -vE "401|403|404|500|503|google|popup" \
           | sed 's|^\./||' | sed 's/\.html$//' \
           | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
           
-          # 3. トップページ(ルート)を確実に追加
+          # 3. トップページを追加
           echo "https://ypz-official-site.pages.dev/" >> urls.txt
 
           # 4. 重複を消して整理
           sort -u urls.txt -o urls.txt
+          
+          # デバッグ：生成されたURLを表示
+          echo "Generated URLs:"
+          cat urls.txt
 
-          # 5. URLリストをJSON形式に安全に変換して送信 (ここを修正したよ！)
-          # jqを使って、URLの中に ? があっても壊れないようにしたよ
+          # 5. URLリストをJSON形式に変換
           URL_LIST_JSON=$(jq -R . urls.txt | jq -s .)
           
+          # 6. Bingに送信
           curl -X POST "https://www.bing.com/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
           -d "{
             \"host\": \"ypz-official-site.pages.dev\",
             \"key\": \"fbc95f59f2ea4f08a30be6882a775cd1\",
-            \"keyLocation\": \"https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a44e8a0caf88bfa.txt\",
+            \"keyLocation\": \"https://ypz-official-site.pages.dev/fbc95f59f2ea4f08a30be6882a775cd1.txt\",
             \"urlList\": $URL_LIST_JSON
           }"
