@@ -1,28 +1,22 @@
-name: IndexNow Auto Sync
-
-on:
-  repository_dispatch:
-    types: [cms_update] # microCMSの更新通知を受け取る設定
-  workflow_dispatch:      # 手動でも実行できるようにしておく
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Blog IDs and Submit to IndexNow
+- name: Get All URLs and Submit
         run: |
-          # 1. microCMSから全記事のIDを取得してURLリスト(urls.txt)を作る
-          # ※ 自分のサービスドメイン(yukkuripczanmai)に合わせてるよ
+          # 1. microCMSからブログ記事IDを取得してURLを作る
           curl -H "X-MICROCMS-API-KEY: ${{ secrets.MICROCMS_API_KEY }}" \
           "https://yukkuripczanmai.microcms.io/api/v1/blogs?fields=id&limit=100" \
           | jq -r '.contents[].id' \
           | sed 's|^|https://ypz-official-site.pages.dev/post?id=|' > urls.txt
 
-          # 2. ついでにトップページとブログ一覧ページも追加
+          # 2. GitHub内のHTMLファイル（紹介ページなど）を探して追加
+          # index.html, blog.html, profile.html などを自動抽出
+          find . -name "*.html" ! -name "index.html" | sed 's|^\./||' | sed 's/\.html$//' | sed 's|^|https://ypz-official-site.pages.dev/|' >> urls.txt
+          
+          # 3. トップページ(ルート)を確実に追加
           echo "https://ypz-official-site.pages.dev/" >> urls.txt
-          echo "https://ypz-official-site.pages.dev/blog" >> urls.txt
 
-          # 3. 作ったリストをBing IndexNowに送信
+          # 4. 重複を消して整理
+          sort -u urls.txt -o urls.txt
+
+          # 5. Bingに送信
           curl -X POST "https://www.bing.com/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
           -d '{
