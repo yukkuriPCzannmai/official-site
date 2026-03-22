@@ -37,6 +37,18 @@ body {
     }
 }
 
+@keyframes subtleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
 @keyframes glowPulse {
 
     0%,
@@ -65,11 +77,15 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     min-height: 70px;
-    border-bottom: 2px solid rgba(0, 229, 255, 0.15);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
-.serch{
+
+/* 検索ボックスの幅を制限して中央や右に寄せる */
+.search-wrapper {
     max-width: 300px;
     /* ここを好みの幅に変えてね */
     margin-left: auto;
@@ -77,7 +93,6 @@ header {
     margin-right: 20px;
     /* 画面端から少し離す */
 }
-
 
 .logo-title {
     display: flex;
@@ -139,12 +154,44 @@ nav.menu ul li a:hover {
     transform: translateY(-1px);
 }
 
-/* --- Google CSE 検索ウィジェットの十字ボタンを非表示 --- */
+/* --- Google CSE 検索ウィジェットのコンパクト化 --- */
 .gsc-search-button-v2 svg,
 .gsc-clear-button,
 table.gsc-search-box td.gsc-clear-button,
 .gcse-search .gsc-control-cse .gsc-clear-button {
     display: none !important;
+}
+
+.gcse-search {
+    max-width: 220px !important;
+}
+
+.gsc-control-cse {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.gsc-search-box {
+    margin-bottom: 0 !important;
+}
+
+.gsc-input-box {
+    border-radius: 6px !important;
+}
+
+table.gsc-search-box td.gsc-input {
+    padding-right: 4px !important;
+}
+
+.gsc-search-button {
+    margin-left: 4px !important;
+}
+
+.gsc-search-button-v2 {
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    min-width: auto !important;
 }
 
 /* --- ハンバーガーメニュー --- */
@@ -219,10 +266,16 @@ main {
 .トップ画像 {
     max-width: 100%;
     height: auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 229, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(0, 229, 255, 0.06);
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.トップ画像:hover {
+    transform: scale(1.005);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25), 0 0 80px rgba(0, 229, 255, 0.1);
 }
 
 .キャッチコピー {
@@ -236,27 +289,36 @@ main {
     padding: 0 10px;
 }
 
+/* h1→h2変更に対応したセクションスタイル */
+.character-button .text h2 {
+    font-size: 1.3rem;
+    margin: 0 0 8px;
+    color: #1A237E;
+}
+
 /* --- キャラクターカード --- */
 .character-button {
     display: flex;
     align-items: center;
-    background: #fff;
-    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 229, 255, 0.12);
     border-left: 5px solid #00E5FF;
-    border-radius: 16px;
-    padding: 24px;
-    margin: 24px auto;
+    border-radius: 18px;
+    padding: 28px;
+    margin: 28px auto;
     max-width: 800px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     text-align: left;
 }
 
 .character-button:hover {
-    background: #fff;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 229, 255, 0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.12), 0 8px 20px rgba(0, 0, 0, 0.08);
     border-left-color: #00B8D4;
+    border-color: rgba(0, 229, 255, 0.25);
 }
 
 .character-button img {
@@ -265,7 +327,13 @@ main {
     margin-right: 20px;
     border-radius: 50%;
     border: 3px solid #00E5FF;
-    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-button img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 28px rgba(0, 229, 255, 0.35);
 }
 
 .character-button .text h2 {
@@ -277,9 +345,9 @@ main {
 .character-button .text p {
     font-size: 0.95rem;
     margin: 0;
-   color: #666;
+    color: #666;
     line-height: 1.7;
-   
+
 }
 
 /* --- 更新情報セクション --- */
@@ -288,7 +356,7 @@ main {
     max-width: 800px;
 }
 
-#news h1 {
+#news h2 {
     font-size: 1.5rem;
     color: #1A237E;
 }
@@ -354,50 +422,53 @@ main {
 }
 
 /* --- 最新動画セクション --- */
-.new.video h1 {
+.new.video h2 {
     text-align: center;
-    margin: 30px 0 16px;
-    font-size: 1.6rem;
+    margin: 40px 0 20px;
+    font-size: 1.7rem;
     color: #1A237E;
     position: relative;
+    letter-spacing: 0.05em;
 }
 
-.new.video h1::after {
+.new.video h2::after {
     content: "";
     display: block;
-    width: 60px;
+    width: 80px;
     height: 4px;
     background: linear-gradient(135deg, #00E5FF, #00B8D4);
     border-radius: 2px;
-    margin: 10px auto 0;
+    margin: 12px auto 0;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
 }
 
 /* --- 動画カード --- */
 #video-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 28px;
     justify-content: center;
-    margin: 20px;
+    margin: 24px;
 }
 
 .video-info {
-    background: #fff;
-    border: none;
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
     padding: 0;
     width: 300px;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(0, 229, 255, 0.08);
 }
 
 .video-info:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 229, 255, 0.12);
-    border-color: rgba(0, 229, 255, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15), 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 229, 255, 0.3);
 }
 
 .video-info img {
@@ -405,6 +476,11 @@ main {
     height: 170px;
     object-fit: cover;
     border-radius: 0;
+    transition: transform 0.4s ease;
+}
+
+.video-info:hover img {
+    transform: scale(1.04);
 }
 
 .video-info h2 {
@@ -433,12 +509,19 @@ main {
 
 /* --- サイトマップ（ナビゲーター） --- */
 .Navigator.in.home {
-    margin: 40px auto;
+    margin: 50px auto;
     max-width: 800px;
     text-align: center;
+    padding: 36px 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
 }
 
-.Navigator.in.home h1 {
+.Navigator.in.home h2 {
     font-size: 1.5rem;
     color: #1A237E;
     margin-bottom: 20px;
@@ -541,16 +624,17 @@ h1 {
 
 /* --- フッター --- */
 footer {
-    background: linear-gradient(135deg, #0D1442, #1A237E);
+    background: linear-gradient(135deg, #080C2A 0%, #0D1442 30%, #1A237E 70%, #0D1442 100%);
     color: #fff;
-    padding: 30px 10%;
+    padding: 36px 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    margin-top: 40px;
-    border-top: 2px solid rgba(0, 229, 255, 0.15);
+    margin-top: 50px;
+    border-top: 3px solid rgba(0, 229, 255, 0.2);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
 }
 
 footer .footer-logo {
@@ -610,6 +694,62 @@ footer .copyright {
     footer .footer-links ul {
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+/* --- モバイル対応強化 --- */
+@media (max-width: 768px) {
+    .キャッチコピー {
+        font-size: 1rem;
+        padding: 0 8px;
+    }
+
+    .video-info {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    #video-list {
+        gap: 16px;
+        margin: 16px 10px;
+    }
+
+    .character-button {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .character-button img {
+        width: 70px;
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .youtube-subscribe,
+    .btn-video-channel {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .Navigator.in.home a {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 6px auto;
+    }
+
+    main {
+        padding: 20px 12px;
+    }
+
+    .gcse-search {
+        max-width: 160px !important;
     }
 }
 

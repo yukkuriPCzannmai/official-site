@@ -35,9 +35,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     min-height: 70px;
-    border-bottom: 2px solid rgba(0, 229, 255, 0.15);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .logo-title {
@@ -99,12 +101,44 @@ nav.menu ul li a:hover {
     background: rgba(0, 229, 255, 0.1);
 }
 
-/* --- Google CSE 十字ボタン非表示 --- */
+/* --- Google CSE 検索ウィジェットのコンパクト化 --- */
 .gsc-search-button-v2 svg,
 .gsc-clear-button,
 table.gsc-search-box td.gsc-clear-button,
 .gcse-search .gsc-control-cse .gsc-clear-button {
     display: none !important;
+}
+
+.gcse-search {
+    max-width: 200px !important;
+}
+
+.gsc-control-cse {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.gsc-search-box {
+    margin-bottom: 0 !important;
+}
+
+.gsc-input-box {
+    border-radius: 6px !important;
+}
+
+table.gsc-search-box td.gsc-input {
+    padding-right: 4px !important;
+}
+
+.gsc-search-button {
+    margin-left: 4px !important;
+}
+
+.gsc-search-button-v2 {
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    min-width: auto !important;
 }
 
 /* --- ハンバーガーメニュー --- */
@@ -176,18 +210,28 @@ main {
 
 /* --- チャンネル説明セクション --- */
 .channel-description {
-    background: #fff;
-    padding: 40px;
-    margin: 24px auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 44px;
+    margin: 28px auto;
     max-width: 800px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     text-align: center;
     border-top: 4px solid #00E5FF;
+    border: 1px solid rgba(0, 229, 255, 0.12);
+    border-top: 4px solid #00E5FF;
     animation: fadeInUp 0.5s ease-out both;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.channel-description h1 {
+.channel-description:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 229, 255, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.channel-description h2 {
     color: #1A237E;
     font-size: 1.6rem;
     margin-bottom: 16px;
@@ -202,18 +246,27 @@ main {
 
 /* --- チャンネル方針セクション --- */
 .channel-policy {
-    background: #fff;
-    padding: 40px;
-    margin: 24px auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 44px;
+    margin: 28px auto;
     max-width: 800px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     text-align: center;
+    border: 1px solid rgba(0, 229, 255, 0.12);
     border-top: 4px solid #00B8D4;
     animation: fadeInUp 0.5s ease-out 0.1s both;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.channel-policy h1 {
+.channel-policy:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 229, 255, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.channel-policy h2 {
     color: #1A237E;
     font-size: 1.6rem;
     margin-bottom: 16px;
@@ -233,16 +286,19 @@ main {
 
 /* --- キャラクター紹介セクション --- */
 .character-introduction {
-    margin: 40px auto;
+    margin: 48px auto;
     max-width: 1000px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 36px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 229, 255, 0.1);
     animation: fadeInUp 0.5s ease-out 0.2s both;
 }
 
-.character-introduction>h1 {
+.character-introduction>h2 {
     font-size: 1.8rem;
     color: #1A237E;
     text-align: center;
@@ -250,7 +306,7 @@ main {
     position: relative;
 }
 
-.character-introduction>h1::after {
+.character-introduction>h2::after {
     content: "";
     display: block;
     width: 60px;
@@ -261,8 +317,7 @@ main {
 }
 
 /* キャラクター名見出し */
-.character-introduction h1+h1,
-.character-introduction h1:not(:first-child) {
+.character-introduction h3 {
     font-size: 1.5rem;
     color: #1A237E;
     text-align: left;
@@ -279,18 +334,22 @@ main {
     justify-content: space-between;
     gap: 24px;
     margin-bottom: 36px;
-    padding: 24px;
-    background: #f8f9fb;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s ease;
+    padding: 28px;
+    background: rgba(248, 249, 251, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-left: 4px solid transparent;
+    border: 1px solid rgba(0, 0, 0, 0.04);
     border-left: 4px solid transparent;
 }
 
 .character-info:hover,
 .character-intro:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(0, 229, 255, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 229, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-left-color: #00E5FF;
+    border-color: rgba(0, 229, 255, 0.15);
     border-left-color: #00E5FF;
 }
 
@@ -378,8 +437,17 @@ main {
         padding: 24px;
     }
 
-    h1 {
+    .character-introduction {
+        padding: 20px 14px;
+    }
+
+    h1,
+    h2 {
         font-size: 1.4em;
+    }
+
+    .gcse-search {
+        max-width: 150px !important;
     }
 }
 
@@ -392,16 +460,17 @@ h1 {
 
 /* --- フッター --- */
 footer {
-    background: linear-gradient(135deg, #0D1442, #1A237E);
+    background: linear-gradient(135deg, #080C2A 0%, #0D1442 30%, #1A237E 70%, #0D1442 100%);
     color: #fff;
-    padding: 30px 10%;
+    padding: 36px 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    margin-top: 40px;
-    border-top: 2px solid rgba(0, 229, 255, 0.15);
+    margin-top: 50px;
+    border-top: 3px solid rgba(0, 229, 255, 0.2);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
 }
 
 footer .footer-logo {

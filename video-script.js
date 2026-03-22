@@ -55,7 +55,7 @@ const fetchAllVideos = async () => {
                 videoInfo.classList.add('video-info');
                 videoInfo.innerHTML = `
                     <a href="${videoUrl}" target="_blank">
-                        <img src="${thumbnailUrl}" alt="サムネイル">
+                        <img src="${thumbnailUrl}" alt="${videoTitle}のサムネイル">
                     </a>
                     <h2>${videoTitle}</h2>
                 `;

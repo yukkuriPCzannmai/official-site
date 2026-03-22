@@ -35,9 +35,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     min-height: 70px;
-    border-bottom: 2px solid rgba(0, 229, 255, 0.15);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .logo-title {
@@ -99,12 +101,44 @@ nav.menu ul li a:hover {
     background: rgba(0, 229, 255, 0.1);
 }
 
-/* --- Google CSE 十字ボタン非表示 --- */
+/* --- Google CSE 検索ウィジェットのコンパクト化 --- */
 .gsc-search-button-v2 svg,
 .gsc-clear-button,
 table.gsc-search-box td.gsc-clear-button,
 .gcse-search .gsc-control-cse .gsc-clear-button {
     display: none !important;
+}
+
+.gcse-search {
+    max-width: 200px !important;
+}
+
+.gsc-control-cse {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.gsc-search-box {
+    margin-bottom: 0 !important;
+}
+
+.gsc-input-box {
+    border-radius: 6px !important;
+}
+
+table.gsc-search-box td.gsc-input {
+    padding-right: 4px !important;
+}
+
+.gsc-search-button {
+    margin-left: 4px !important;
+}
+
+.gsc-search-button-v2 {
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    min-width: auto !important;
 }
 
 /* --- ハンバーガーメニュー --- */
@@ -275,20 +309,22 @@ table.gsc-search-box td.gsc-clear-button,
 
 /* --- ブログカード --- */
 .blog-card {
-    background: white;
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 229, 255, 0.08);
 }
 
 .blog-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(0, 229, 255, 0.12);
-    border-color: rgba(0, 229, 255, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 229, 255, 0.25);
 }
 
 .blog-card a {
@@ -300,6 +336,11 @@ table.gsc-search-box td.gsc-clear-button,
     width: 100%;
     height: 165px;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-card:hover img {
+    transform: scale(1.04);
 }
 
 .card-content {
@@ -496,16 +537,17 @@ button:hover {
 
 /* --- フッター --- */
 footer {
-    background: linear-gradient(135deg, #0D1442, #1A237E);
+    background: linear-gradient(135deg, #080C2A 0%, #0D1442 30%, #1A237E 70%, #0D1442 100%);
     color: #fff;
-    padding: 30px 10%;
+    padding: 36px 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    margin-top: 40px;
-    border-top: 2px solid rgba(0, 229, 255, 0.15);
+    margin-top: 50px;
+    border-top: 3px solid rgba(0, 229, 255, 0.2);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
 }
 
 footer .footer-logo {
@@ -564,6 +606,10 @@ footer .copyright {
     footer .footer-links ul {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .gcse-search {
+        max-width: 150px !important;
     }
 }
 

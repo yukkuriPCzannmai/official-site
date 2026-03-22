@@ -1,104 +1,110 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PQ38QWKR');</script>
-<!-- End Google Tag Manager -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ゆっくりPC三昧公式サイト|検索</title>
-        <link rel="icon" href="logo.ico">
-  <!-- OGP -->
-  <meta property="og:title" content="ゆっくりPC三昧 公式サイト" />
-  <meta property="og:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yukkuripczannmai.github.io/official-site/index.html" />
-  <meta property="og:image" content="banner.jpg" />
-<meta name="google-site-verification" content="v1p5_97U2oXczL7SMSivi4DtCAwCjVPkCqdKGJ7EaCM" />
-  <!-- Twitterカード -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ゆっくりPC三昧 公式サイト" />
-  <meta name="twitter:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
-  <meta name="twitter:image" content="banner.jpg" />
 
-        <link rel="stylesheet" href="blog.css">
-        <script src="https://apis.google.com/js/api.js"></script>
-        <script>
-            // gapiの初期化
-            function initApi() {
-                gapi.client.init({
-                    apiKey: 'YOUR_API_KEY',  // Google APIキーを設定
-                    clientId: 'YOUR_CLIENT_ID',  // クライアントIDを設定
-                    discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
-                    scope: "https://www.googleapis.com/auth/youtube.readonly"
-                }).then(function() {
-                    console.log('API initialized');
-                    // APIが準備できた後に行いたい処理をここに追加
-                }).catch(function(error) {
-                    console.log('API initialization failed: ', error);
-                });
-            }
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PQ38QWKR');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆっくりPC三昧公式サイト|検索</title>
+    <meta name="description" content="ゆっくりPC三昧公式サイトの検索ページです。サイト内の記事や動画情報を検索できます。">
+    <link rel="icon" href="logo.ico">
+    <!-- OGP -->
+    <meta property="og:title" content="ゆっくりPC三昧 公式サイト" />
+    <meta property="og:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yukkuripczannmai.github.io/official-site/index.html" />
+    <meta property="og:image" content="banner.jpg" />
+    <meta name="google-site-verification" content="v1p5_97U2oXczL7SMSivi4DtCAwCjVPkCqdKGJ7EaCM" />
+    <!-- Twitterカード -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ゆっくりPC三昧 公式サイト" />
+    <meta name="twitter:description" content="PC初心者向けのゆっくり解説動画チャンネルの公式サイトです。" />
+    <meta name="twitter:image" content="banner.jpg" />
 
-            function loadApi() {
-                gapi.load('client:auth2', initApi); // APIの初期化を行う
-            }
-
-            window.onload = function() {
-                loadApi(); // ページ読み込み時にAPIをロード
-            };
-
-            // 検索機能
-            document.addEventListener("DOMContentLoaded", function() {
-                // 検索対象となるデータ
-                const posts = [
-                    { title: "PCの最適化方法について", content: "PCのパフォーマンスを最大化する方法..." },
-                    { title: "Windowsのメモリ管理", content: "Windowsのメモリ管理方法について解説..." },
-                    { title: "ネットワークトラブルシューティング", content: "ネットワークの問題解決方法について..." }
-                ];
-
-                // 検索フォームと結果表示エリアの参照
-                const searchForm = document.getElementById("search-form");
-                const searchInput = document.getElementById("search-input");
-                const searchResults = document.getElementById("search-results");
-
-                // 検索処理
-                searchForm.addEventListener("submit", function (event) {
-                    event.preventDefault(); // フォーム送信のデフォルト動作を防ぐ
-
-                    const query = searchInput.value.toLowerCase();
-                    const filteredPosts = posts.filter(post => 
-                        post.title.toLowerCase().includes(query) || post.content.toLowerCase().includes(query)
-                    );
-
-                    // 結果表示
-                    if (searchResults) {
-                        searchResults.innerHTML = "";
-                        if (filteredPosts.length > 0) {
-                            filteredPosts.forEach(post => {
-                                const postElement = document.createElement("div");
-                                postElement.classList.add("search-result");
-                                postElement.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-                                searchResults.appendChild(postElement);
-                            });
-                        } else {
-                            searchResults.innerHTML = "<p>一致する結果はありません。</p>";
-                        }
-                    }
-                });
+    <link rel="stylesheet" href="blog.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        // gapiの初期化
+        function initApi() {
+            gapi.client.init({
+                apiKey: 'YOUR_API_KEY',  // Google APIキーを設定
+                clientId: 'YOUR_CLIENT_ID',  // クライアントIDを設定
+                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
+                scope: "https://www.googleapis.com/auth/youtube.readonly"
+            }).then(function () {
+                console.log('API initialized');
+                // APIが準備できた後に行いたい処理をここに追加
+            }).catch(function (error) {
+                console.log('API initialization failed: ', error);
             });
-        </script>
+        }
+
+        function loadApi() {
+            gapi.load('client:auth2', initApi); // APIの初期化を行う
+        }
+
+        window.onload = function () {
+            loadApi(); // ページ読み込み時にAPIをロード
+        };
+
+        // 検索機能
+        document.addEventListener("DOMContentLoaded", function () {
+            // 検索対象となるデータ
+            const posts = [
+                { title: "PCの最適化方法について", content: "PCのパフォーマンスを最大化する方法..." },
+                { title: "Windowsのメモリ管理", content: "Windowsのメモリ管理方法について解説..." },
+                { title: "ネットワークトラブルシューティング", content: "ネットワークの問題解決方法について..." }
+            ];
+
+            // 検索フォームと結果表示エリアの参照
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
+            const searchResults = document.getElementById("search-results");
+
+            // 検索処理
+            searchForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // フォーム送信のデフォルト動作を防ぐ
+
+                const query = searchInput.value.toLowerCase();
+                const filteredPosts = posts.filter(post =>
+                    post.title.toLowerCase().includes(query) || post.content.toLowerCase().includes(query)
+                );
+
+                // 結果表示
+                if (searchResults) {
+                    searchResults.innerHTML = "";
+                    if (filteredPosts.length > 0) {
+                        filteredPosts.forEach(post => {
+                            const postElement = document.createElement("div");
+                            postElement.classList.add("search-result");
+                            postElement.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+                            searchResults.appendChild(postElement);
+                        });
+                    } else {
+                        searchResults.innerHTML = "<p>一致する結果はありません。</p>";
+                    }
+                }
+            });
+        });
+    </script>
     <!-- HTMLファイルの最後、</body>の直前が推奨 -->
     <script src="popup.js"></script>
-    </head>
+</head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ38QWKR"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ38QWKR" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="logo-title">
             <img src="logo.ico" alt="サイトのロゴ">
@@ -143,7 +149,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-links">
             <ul>
                 <li><a href="about.html">私たちについて</a></li>
-               <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7"target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+                <li><a href="https://forms.gle/vrLK5bsm3UAYgypi7" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+                </li>
                 <li><a href="terms.html">プライバシー</a></li>
             </ul>
         </div>
@@ -153,10 +160,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
 </body>
+
 </html>
-
-
-
-
-
-

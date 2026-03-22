@@ -14,7 +14,8 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゆっくりPC三昧公式サイト</title>
+  <title>チャンネルブログ | ゆっくりPC三昧 公式サイト</title>
+  <meta name="description" content="ゆっくりPC三昧のチャンネルブログです。PC関連の最新記事やチャンネルからのお知らせを掲載しています。">
   <link rel="icon" href="logo.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +164,7 @@
               card.className = "blog-card";
               card.innerHTML = `
           <a href="post.html?id=${post.id}">
-            <img src="${post.eyecatch ? post.eyecatch.url : ''}">
+            <img src="${post.eyecatch ? post.eyecatch.url : ''}" alt="${post.title}">
             <div class="card-content">
               <h3>${post.title}</h3>
               <p>${new Date(post.publishedAt).toLocaleDateString()} 更新</p>
@@ -199,4 +200,3 @@
 
 
 </html>
-

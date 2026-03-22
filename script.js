@@ -1,18 +1,18 @@
-  // 今のドメインが github.io を含んでいるかチェック
+// 今のドメインが github.io を含んでいるかチェック
 
-  // 1. GitHub Pages (github.io) にいるときだけ実行
-  if (window.location.hostname.includes("git")) {
-    
-    // 2. 今のパス（例: /official-site/index.html）を取得
-    let path = window.location.pathname;
-    
-    // 3. 先頭の "/official-site" を空文字に置き換えて削る
-    // これで "/official-site/page.html" が "/page.html" になる
-    let newPath = path.replace(/^\/official-site/, "");
-    
-    // 4. 新しいドメインに、掃除したパスをくっつけてリダイレクト
-    window.location.replace("https://ypz-official-site.pages.dev" + newPath);
-  }
+// 1. GitHub Pages (github.io) にいるときだけ実行
+if (window.location.hostname.includes("git")) {
+
+  // 2. 今のパス（例: /official-site/index.html）を取得
+  let path = window.location.pathname;
+
+  // 3. 先頭の "/official-site" を空文字に置き換えて削る
+  // これで "/official-site/page.html" が "/page.html" になる
+  let newPath = path.replace(/^\/official-site/, "");
+
+  // 4. 新しいドメインに、掃除したパスをくっつけてリダイレクト
+  window.location.replace("https://ypz-official-site.pages.dev" + newPath);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
@@ -89,7 +89,7 @@ const fetchLatestVideos = async () => {
         videoInfo.classList.add('video-info');
         videoInfo.innerHTML = `
                     <a href="${videoUrl}" target="_blank">
-                        <img src="${thumbnailUrl}" alt="サムネイル">
+                        <img src="${thumbnailUrl}" alt="${videoTitle}のサムネイル">
                     </a>
                     <h2>${videoTitle}</h2>
                 `;
@@ -169,4 +169,32 @@ document.addEventListener('DOMContentLoaded', () => {
 // 修正：ページが読み込まれたら、自動的に「すべて」のフィルタリングを実行する
 document.addEventListener('DOMContentLoaded', () => {
   filterByCategory('すべて');
+});
+
+// --- スクロールフェードインアニメーション ---
+document.addEventListener('DOMContentLoaded', () => {
+  const targets = document.querySelectorAll(
+    '.character-button, .new.video, #news, .Navigator.in.home, .button-container'
+  );
+
+  targets.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  targets.forEach(el => observer.observe(el));
 });
